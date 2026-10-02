@@ -1,0 +1,4 @@
+# SNI for clients that do not pass the host name (Java HttpsConnection on S80v2).
+# Format: <IPv4 address of the server> <host name>   - one per line.
+# The address must match the "peer" address in C:\Logs\SSL\SSLLog.txt.
+77.75.78.26 pubtran-backend.mapy.cz
