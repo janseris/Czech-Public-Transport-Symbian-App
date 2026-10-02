@@ -26,16 +26,18 @@ git clone -b eka1-fixes https://github.com/janseris/bearssl-symbian.git symbian-
 In this repo:
 
 - `symbian-build/out/`: prebuilt `ssladaptor_sni_vN.dll` (no log) and `ssladaptor_log_vN.dll`
-  (logs to `C:\Logs\SSL\SSLLog.txt` when that folder exists), v1 to v7, plus the source patches.
-  v7 is the current one.
+  (logs to `C:\Logs\SSL\SSLLog.txt` when that folder exists), v1 to v10, plus the source patches.
+  **v10 is the current one**, tested with app 1.1. The working combination and the fork's
+  changes are described in the pubtran-j2me README, section *Working configuration*.
 - `symbian-build/gcc-539-2aeh-source.tar.bz2`: source of the Symbian GCC 2.9 compiler.
 - `tlsprobe/`: a desktop BearSSL probe that behaves like the patch (optional SNI).
 - Build guide for the DLL: [BUILD_SYMBIAN_TLS.md](BUILD_SYMBIAN_TLS.md).
 
 ## Installing on the phone
 
-1. **TLS patch.** Copy `ssladaptor_sni_v7.dll` to the phone as `C:\System\Libs\ssladaptor.dll`
-   and restart the phone. For logging use `ssladaptor_log_v7.dll` instead and create `C:\Logs\SSL\`.
+1. **TLS patch.** Copy `ssladaptor_sni_v10.dll` (or `pubtran-j2me/phone/ssladaptor.dll`) to the phone as
+   `C:\System\Libs\ssladaptor.dll` and restart the phone. For logging use `ssladaptor_log_v10.dll`
+   instead and create `C:\Logs\SSL\`.
 2. **The app.** In `pubtran-j2me/ota/` run `start_ota_server.bat` (port 8000). In the phone's
    browser open `http://<PC address>:8000/` (USB networking: `http://192.168.137.1:8000/`)
    and download the **`.jar` directly**. Opening the `.jad` makes the phone reject the suite
