@@ -480,3 +480,13 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# --- Nokia 9300 work: separate repositories, cloned next to this one ---
+# pubtran-j2me: fork of gtrxac/discord-j2me (own repo)
+pubtran-j2me/
+# forks of the TLS patch (own repos: janseris/symbian-tls, janseris/bearssl-symbian)
+symbian-build/symbian-tls/
+symbian-build/bearssl/
+symbian-build/*.bundle
+# S60 2nd Ed. FP1 SDK: over GitHub's 100 MB file limit, see BUILD_SYMBIAN_TLS.md for the download
+symbian-build/S60_SDK_2_1_NET.zip

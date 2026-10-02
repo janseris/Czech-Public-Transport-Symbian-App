@@ -15,6 +15,14 @@ This folder contains everything used to capture and decode the API of the Androi
 | `pubtran.har` | The same capture as HAR. The binary request and response bodies are mangled in it, so it's only good for an overview. |
 | `PubtranClient/` | Our client: a Visual Studio solution with an API library and a WinForms UI. `PubtranClient/API.md` is the full API reference. |
 
+
+## Nokia 9300 (J2ME) port
+
+The J2ME app for the Nokia 9300 (Series 80 v2, Symbian 7.0s) and the TLS patch it needs
+live in separate repositories. See [NOKIA_9300.md](NOKIA_9300.md) for the layout,
+installation and why signed MIDlets can't be used, and [BUILD_SYMBIAN_TLS.md](BUILD_SYMBIAN_TLS.md)
+for building `SSLADAPTOR.dll`.
+
 ---
 
 ## 1. Tools
