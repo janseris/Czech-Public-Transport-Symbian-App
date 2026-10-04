@@ -492,3 +492,5 @@ symbian-build/*.bundle
 symbian-build/s60-sdk-2.1/
 symbian-build/S60_SDK_2_1_NET.zip
 symbian-build/S60_SDK_2_1_NET_2.7z.*
+# toolkit for the next app: own repo janseris/android-to-j2me-kit
+android-to-j2me-kit/

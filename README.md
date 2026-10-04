@@ -23,6 +23,10 @@ live in separate repositories. See [NOKIA_9300.md](NOKIA_9300.md) for the layout
 installation and why signed MIDlets can't be used, and [BUILD_SYMBIAN_TLS.md](BUILD_SYMBIAN_TLS.md)
 for building `SSLADAPTOR.dll`.
 
+The reusable parts (capture scripts, flow and FastRPC decoders, decompiling notes, Nokia 9300
+notes, OTA server, TLS DLL) are collected for the next app in
+[janseris/android-to-j2me-kit](https://github.com/janseris/android-to-j2me-kit).
+
 ---
 
 ## 1. Tools
