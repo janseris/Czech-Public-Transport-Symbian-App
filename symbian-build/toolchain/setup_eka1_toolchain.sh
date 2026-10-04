@@ -4,8 +4,9 @@
 #
 # usage:  ./setup_eka1_toolchain.sh <dir with the two archives> [install dir, default ~/sym]
 #   <dir> must contain gcc-539-2aeh-source.tar.bz2 (in this repo: symbian-build/) and
-#   S60_SDK_2_1_NET.zip (not in git, see BUILD_SYMBIAN_TLS.md).
-# Needs: build-essential flex bison libncurses-dev zlib1g-dev cabextract perl git
+#   S60_SDK_2_1_NET.zip, or the split 7z (S60_SDK_2_1_NET_2.7z.001 ... .012) from the private
+#   repo janseris/s60-sdk-2.1 cloned as <dir>/s60-sdk-2.1 (see BUILD_SYMBIAN_TLS.md).
+# Needs: build-essential flex bison libncurses-dev zlib1g-dev cabextract perl git p7zip-full
 # Tested on Ubuntu 24.04 (gcc 13, perl 5.38), 2026-10.
 #
 # Afterwards:  export EPOCROOT=<install dir>/s60_21/ PATH=<install dir>/wrap:$PATH
@@ -18,6 +19,19 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 GNUPOC_COMMIT=d3ddaf58c734ad3ab34dc60a012f9d4768a9ed3e
 mkdir -p "$PREFIX"
 PREFIX=$(cd "$PREFIX" && pwd)
+SDK_SHA256=1e535703c11402b70e6c37d32b41047e63a44ec65a744f5012d1c012ccf0cf85
+
+# S60 SDK: extract the split 7z (from <dir> or the s60-sdk-2.1 clone) if the zip isn't there yet
+if [ ! -f "$SRC/S60_SDK_2_1_NET.zip" ]; then
+    for d in "$SRC" "$SRC/s60-sdk-2.1"; do
+        if [ -f "$d/S60_SDK_2_1_NET_2.7z.001" ]; then
+            echo "== extracting S60_SDK_2_1_NET.zip from $d/S60_SDK_2_1_NET_2.7z.0*"
+            7z x -y -o"$SRC" "$d/S60_SDK_2_1_NET_2.7z.001" > /dev/null
+            break
+        fi
+    done
+fi
+echo "$SDK_SHA256  $SRC/S60_SDK_2_1_NET.zip" | sha256sum -c -
 
 echo "== GnuPoc ($GNUPOC_COMMIT)"
 if [ ! -d "$PREFIX/gnupoc" ]; then

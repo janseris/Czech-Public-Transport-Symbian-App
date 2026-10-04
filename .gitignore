@@ -488,5 +488,7 @@ pubtran-j2me/
 symbian-build/symbian-tls/
 symbian-build/bearssl/
 symbian-build/*.bundle
-# S60 2nd Ed. FP1 SDK: over GitHub's 100 MB file limit, see BUILD_SYMBIAN_TLS.md for the download
+# S60 2nd Ed. FP1 SDK (Nokia's, proprietary): own private repo janseris/s60-sdk-2.1
+symbian-build/s60-sdk-2.1/
 symbian-build/S60_SDK_2_1_NET.zip
+symbian-build/S60_SDK_2_1_NET_2.7z.*
