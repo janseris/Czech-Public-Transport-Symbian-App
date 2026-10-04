@@ -38,5 +38,5 @@ toolchain (Metrowerks/ActivePerl 5.6) isn't needed.
 EKA1 DLLs must not have writable static data: petran stops with "Dll has initialised data".
 Keep tables `const` and avoid `static` arrays of pointers.
 
-Copy finished DLLs to `symbian-build/out/` as `ssladaptor_sni_vN.dll` / `ssladaptor_log_vN.dll`
+Copy finished DLLs to `symbian-build/out/` as `ssladaptor_v20-fixN.dll` / `ssladaptor_v20-fixN_log.dll` (our Nth fix build on shinovon's v20)
 and commit them here. Commit the sources to the forks.
