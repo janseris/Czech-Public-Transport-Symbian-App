@@ -494,3 +494,6 @@ symbian-build/S60_SDK_2_1_NET.zip
 symbian-build/S60_SDK_2_1_NET_2.7z.*
 # toolkit for the next app: own repo janseris/android-to-j2me-kit
 android-to-j2me-kit/
+# own repos of the next app
+mapy-j2me/
+mapy/
