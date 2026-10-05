@@ -497,3 +497,6 @@ android-to-j2me-kit/
 # own repos of the next app
 mapy-j2me/
 mapy/
+
+# drafts and previews written by Claude
+Claude outputs/

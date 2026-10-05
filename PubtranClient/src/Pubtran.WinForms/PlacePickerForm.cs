@@ -48,8 +48,18 @@ internal sealed class PlacePickerForm : Form
         _txt.KeyDown += Txt_KeyDown;
         _debounce.Tick += async (_, _) => { _debounce.Stop(); await RefreshListAsync(); };
         _list.DrawItem += List_DrawItem;
-        _list.DoubleClick += (_, _) => Pick();
-        _list.KeyDown += (_, e) => { if (e.KeyCode == Keys.Enter) { Pick(); e.Handled = true; } };
+        // A single click picks the place under the mouse (hovering highlights it first).
+        _list.MouseClick += (_, e) =>
+        {
+            int i = _list.IndexFromPoint(e.Location);
+            if (i >= 0) { _list.SelectedIndex = i; Pick(); }
+        };
+        _list.MouseMove += (_, e) =>
+        {
+            int i = _list.IndexFromPoint(e.Location);
+            if (i >= 0 && i != _list.SelectedIndex) _list.SelectedIndex = i;
+        };
+        _list.KeyDown += (_, e) => { if (e.KeyCode == Keys.Enter) { Pick(); e.Handled = e.SuppressKeyPress = true; } };
 
         Shown += async (_, _) => { _txt.SelectAll(); _txt.Focus(); await RefreshListAsync(); };
         FormClosed += (_, _) => { _cts?.Cancel(); _debounce.Dispose(); };
