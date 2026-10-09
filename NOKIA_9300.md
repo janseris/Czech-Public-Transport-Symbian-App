@@ -40,7 +40,7 @@ In this repo:
 1. **TLS patch.** Copy `ssladaptor_v20-fix10.dll` (or `pubtran-j2me/phone/ssladaptor.dll`) to the phone as
    `C:\System\Libs\ssladaptor.dll` and restart the phone. For logging use `ssladaptor_v20-fix10_log.dll`
    instead and create `C:\Logs\SSL\`.
-2. **The app.** In `pubtran-j2me/ota/` run `start_ota_server.bat` (port 8000). In the phone's
+2. **The app.** In `android-to-j2me-kit/nokia9300/ota/` (the one over-the-air server for all the apps; copy `pubtran-j2me/bin/pubtran_s80.jar` + `.jad` there) run `start_ota_server.bat` (port 8000). In the phone's
    browser open `http://<PC address>:8000/` (USB networking: `http://192.168.137.1:8000/`)
    and download the **`.jar` directly**. Opening the `.jad` makes the phone reject the suite
    before it downloads the jar. The server also serves `ssladaptor.dll` / `ssladaptor_log.dll`
