@@ -1,0 +1,5 @@
+bin/*.pkg
+*.o
+/test/m4vtest
+/test/fuzz
+/test/convtest
