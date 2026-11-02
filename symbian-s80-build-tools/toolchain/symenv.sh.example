@@ -1,4 +1,0 @@
-export PATH=$HOME/loc/usr/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/loc/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-export BISON_PKGDATADIR=$HOME/loc/usr/share/bison
-export M4=$HOME/loc/usr/bin/m4

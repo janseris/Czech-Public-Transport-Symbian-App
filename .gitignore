@@ -507,3 +507,5 @@ S80_DP_2_0_SDK.zip
 nethelper9300/
 # GnuBox for Series 80 has its own repository (janseris/gnubox-s80)
 gnubox-s80/
+# the build tools: own repo janseris/symbian-s80-build-tools
+/symbian-s80-build-tools/
