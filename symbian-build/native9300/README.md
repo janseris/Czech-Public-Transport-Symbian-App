@@ -12,7 +12,8 @@ is ARMv4, and it is a 1999 compiler: it crashes on some valid code and makes slo
 ## 0. What's in this folder (`symbian-build/native9300/`)
 
 The build tools and what Maps 9300 found, for other native 9300 apps. The code in `lib/` and
-`emu/examples/` are snapshots (1.19); the live copies are in `maps9300/`.
+`emu/examples/` are snapshots (1.19); the live copies are in `maps9300/`. What is Mapy.com's (its
+API and formats, the 3D tiles, places) stays in `maps9300/` (`docs/mapy-api.md`, `docs/3d-view.md`).
 
 | Where | What |
 |---|---|
@@ -28,9 +29,6 @@ The build tools and what Maps 9300 found, for other native 9300 apps. The code i
 | `lib/rotate.*` | 16-bit pixel quarter turns (portrait screens, a turned map) |
 | `lib/json.*` | A small JSON reader (no C library) |
 | `lib/wait.h` | Blocking waits for worker threads with a nested active scheduler (from Net Helper 9300) |
-| `lib/mapy/` | Mapy.com: VTS 3D tiles (`vts3d`, `vtsdraw`, chunks), places / FastRPC / reviews (`mapypoi`, `poi`), routes (`route`) |
-| `docs/mapy-api.md` | Mapy.com endpoints and formats found (official API, 3D tiles, the app's places, FastRPC, barrel tiles) |
-| `docs/3d-view.md`, `docs/benchmarks.md`, `tools/vts/` | The VTS format and plan, the phone's measured speeds, Python readers / previews of VTS tiles |
 
 ---
 
