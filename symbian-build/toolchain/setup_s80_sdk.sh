@@ -4,7 +4,9 @@
 # reused: same Symbian 7.0s tools, already patched for Linux and modern perl).
 #
 # usage: ./setup_s80_sdk.sh S80_DP_2_0_SDK.zip [install dir, default ~/sym]
-#   S80_DP_2_0_SDK.zip: Nokia's SDK (proprietary, keep private), from the Symbian Archive
+#   or:  ./setup_s80_sdk.sh symbian-build/s80_DP_2_0_SDK/S80_DP_2_0_SDK.7z.001 [install dir]
+#   S80_DP_2_0_SDK.zip: Nokia's SDK (proprietary, keep private), from the Symbian Archive, or the
+#   split 7z of it in the private repo janseris/s80_DP_2_0_SDK (cloned into symbian-build/; needs 7z)
 #   (https://mrrosset.github.io/Symbian-Archive/SDKs-Series.html)
 # Needs: unshield, unzip; ~/sym from setup_eka1_toolchain.sh.
 # Afterwards: export EPOCROOT=~/sym/s80_20/ PATH=~/sym/wrap:$PATH; bldmake bldfiles; abld build armi urel
@@ -13,6 +15,12 @@ ZIP=$(cd "$(dirname "$1")" && pwd)/$(basename "$1")
 PREFIX=${2:-$HOME/sym}
 D=$PREFIX/s80_20
 TMP=$(mktemp -d)
+case "$ZIP" in
+*.7z.001)
+    echo "== joining the split 7z $ZIP"
+    (cd "$TMP" && 7z x -y "$ZIP" > /dev/null)
+    ZIP=$TMP/S80_DP_2_0_SDK.zip ;;
+esac
 echo "== unpacking $ZIP"
 (cd "$TMP" && unzip -q "$ZIP" && unshield -d x x data1.cab > /dev/null)
 rm -rf "$D"; mkdir -p "$D"

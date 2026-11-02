@@ -48,7 +48,10 @@ s60)
   (cd ~/sym/s60_21/epoc32/tools && patch -s -p1 < $H/sdk-perl-fixes.patch)
   rm -rf ~/sym/wrap && ./install_wrapper ~/sym/wrap > /dev/null && sed -i "s|^EKA1TOOLS=.*|EKA1TOOLS=$HOME/sym/gcc539/bin|" ~/sym/wrap/gnupoc-common.sh ;;
 s80)
-  . ~/symenv.sh; bash $H/setup_s80_sdk.sh $R/S80_DP_2_0_SDK.zip ~/sym ;;
+  . ~/symenv.sh
+  # the zip in the main repo's folder, else the split 7z of the private repo s80_DP_2_0_SDK
+  Z=$R/S80_DP_2_0_SDK.zip; [ -f "$Z" ] || Z=$R/symbian-build/s80_DP_2_0_SDK/S80_DP_2_0_SDK.7z.001
+  bash $H/setup_s80_sdk.sh "$Z" ~/sym ;;
 *) echo "stages: debs clone gccsrc configure make install tools s60 s80"; exit 1 ;;
 esac
 echo "stage $1 done"
