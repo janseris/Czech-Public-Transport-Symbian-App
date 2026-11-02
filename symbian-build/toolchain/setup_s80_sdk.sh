@@ -4,9 +4,9 @@
 # reused: same Symbian 7.0s tools, already patched for Linux and modern perl).
 #
 # usage: ./setup_s80_sdk.sh S80_DP_2_0_SDK.zip [install dir, default ~/sym]
-#   or:  ./setup_s80_sdk.sh symbian-build/s80_DP_2_0_SDK/S80_DP_2_0_SDK.7z.001 [install dir]
+#   or:  ./setup_s80_sdk.sh s80_DP_2_0_SDK/S80_DP_2_0_SDK.7z.001 [install dir]
 #   S80_DP_2_0_SDK.zip: Nokia's SDK (proprietary, keep private), from the Symbian Archive, or the
-#   split 7z of it in the private repo janseris/s80_DP_2_0_SDK (cloned into symbian-build/; needs 7z)
+#   split 7z of it in the private repo janseris/s80_DP_2_0_SDK (cloned into the main repo's root; needs 7z)
 #   (https://mrrosset.github.io/Symbian-Archive/SDKs-Series.html)
 # Needs: unshield, unzip; ~/sym from setup_eka1_toolchain.sh.
 # Afterwards: export EPOCROOT=~/sym/s80_20/ PATH=~/sym/wrap:$PATH; bldmake bldfiles; abld build armi urel

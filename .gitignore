@@ -490,7 +490,7 @@ symbian-build/bearssl/
 symbian-build/*.bundle
 # S60 2nd Ed. FP1 SDK (Nokia's, proprietary): own private repo janseris/s60-sdk-2.1
 symbian-build/s60-sdk-2.1/
-symbian-build/s80_DP_2_0_SDK/
+/s80_DP_2_0_SDK/
 symbian-build/S60_SDK_2_1_NET.zip
 symbian-build/S60_SDK_2_1_NET_2.7z.*
 # toolkit for the next app: own repo janseris/android-to-j2me-kit
