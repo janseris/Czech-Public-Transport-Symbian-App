@@ -99,6 +99,26 @@ When it crashes, check the generated code afterwards (`arm-epoc-pe-objdump -d` o
   crawl. Buffer in RAM and flush every ~10 s, give the user a setting to turn the log file off,
   and prefer the memory card (E:) for caches.
 
+## 2b. Build and packaging gotchas (from GnuBox for S80)
+
+- **`rcomp` and long paths:** "Failed to open ...aif.rsc" / "RCOMP failed" when the toolchain's path
+  plus the project's is very long. Keep both short (`~/sym`, `~/myapp`).
+- **CRLF:** `rcomp` stops with "Unknown character 0xd" on files with Windows line ends (the SDK's
+  examples have them): `sed -i 's/\r$//' file`.
+- **`AppendNum(TUint32)` is ambiguous** in GCC 2.9: `AppendNum((TUint) x, EDecimal)`.
+- **`TRAP(...)` right before `else`** breaks the parsing: put the TRAP in braces.
+- **Renamed a source file:** `abld reallyclean` (stale objects get linked).
+- **Check an app:** `petran -v <name>.app` must say `Data Size 0` (no writable static data).
+- **Harmless noise:** perl "uninitialized value" warnings from `abld`, `Platform "" not supported`
+  from `bldmake`.
+- **The `.pkg`'s Series 80 platform line:** `(0x101F8ED2), 0, 0, 0, {"Series80ProductID"}`.
+- **Case:** `#include`s, `LIBRARY x.lib` and the mmp / bld.inf names must match the lower-cased SDK.
+- **Measured network speeds:** USB RNDIS IP passthrough at most ~107 kB/s; Bluetooth through GnuBox
+  ~20-30 kB/s, held back by the 8 KB default TCP receive window per connection (more connections, or a
+  bigger window: Maps 9300's TCP window setting).
+- **A ready-made toolchain** (no setup run): `prebuilt/` in the private SDK repo `s80_DP_2_0_SDK`
+  (Ubuntu 24.04 or newer); there too: the S80 API reference as HTML, the SDK's guides and examples.
+
 ## 3. Code GCC 2.9 makes slow, and what to write instead
 
 Measured with the emulator (section 5), in instructions.
