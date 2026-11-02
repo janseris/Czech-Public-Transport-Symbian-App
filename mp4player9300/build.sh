@@ -2,8 +2,8 @@
 # Builds bin/mp4player.sis (ARMI, for the Nokia 9300 / 9500, Series 80 2.0).
 #   default: gcc -O2 (set in group/mp4player.mmp); OPT=O ./build.sh builds bin/mp4player_O.sis with -O
 # Needs the EKA1 toolchain and the Series 80 SDK, set up by the main repo's
-#   symbian-build/toolchain/setup_eka1_toolchain.sh <dir> ~/sym
-#   symbian-build/toolchain/setup_s80_sdk.sh S80_DP_2_0_SDK.zip ~/sym
+#   symbian-s80-build-tools/toolchain/setup_eka1_toolchain.sh <dir> ~/sym
+#   symbian-s80-build-tools/toolchain/setup_s80_sdk.sh S80_DP_2_0_SDK.zip ~/sym
 set -e
 SYM=${SYM:-$HOME/sym}
 HERE=$(cd "$(dirname "$0")" && pwd)

@@ -485,14 +485,14 @@ $RECYCLE.BIN/
 # pubtran-j2me: fork of gtrxac/discord-j2me (own repo)
 pubtran-j2me/
 # forks of the TLS patch (own repos: janseris/symbian-tls, janseris/bearssl-symbian)
-symbian-build/symbian-tls/
-symbian-build/bearssl/
-symbian-build/*.bundle
+/symbian-tls/
+/bearssl/
+symbian-s80-build-tools/*.bundle
 # S60 2nd Ed. FP1 SDK (Nokia's, proprietary): own private repo janseris/s60-sdk-2.1
 /s60-sdk-2.1/
 /s80_DP_2_0_SDK/
-symbian-build/S60_SDK_2_1_NET.zip
-symbian-build/S60_SDK_2_1_NET_2.7z.*
+symbian-s80-build-tools/S60_SDK_2_1_NET.zip
+symbian-s80-build-tools/S60_SDK_2_1_NET_2.7z.*
 # toolkit for the next app: own repo janseris/android-to-j2me-kit
 android-to-j2me-kit/
 # own repos of the next app
@@ -505,3 +505,5 @@ Claude outputs/
 # Nokia Series 80 SDK (proprietary, keep private)
 S80_DP_2_0_SDK.zip
 nethelper9300/
+# GnuBox for Series 80 has its own repository (janseris/gnubox-s80)
+gnubox-s80/

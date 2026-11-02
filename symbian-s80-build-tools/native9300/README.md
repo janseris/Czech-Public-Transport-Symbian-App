@@ -9,7 +9,7 @@ The phone: TI OMAP1510, an ARM925T core at 150 MHz (ARMv4T: no `CLZ`, `SMULxy`, 
 no FPU, 16 KB instruction / 8 KB data cache (16-byte lines), slow RAM. The compiler's `armi` target
 is ARMv4, and it is a 1999 compiler: it crashes on some valid code and makes slow code from much more.
 
-## 0. What's in this folder (`symbian-build/native9300/`)
+## 0. What's in this folder (`symbian-s80-build-tools/native9300/`)
 
 The build tools and what Maps 9300 found, for other native 9300 apps. The code in `lib/` and
 `emu/examples/` are snapshots (1.19); the live copies are in `maps9300/`. What is Mapy.com's (its
@@ -85,6 +85,15 @@ When it crashes, check the generated code afterwards (`arm-epoc-pe-objdump -d` o
   `MakeF64` does).
 - **No 64-bit conversions between `double` and `long long`** worth using. Keep doubles within
   ±2^31 and convert to `int` (`VFloor` in `vts3d.cpp`).
+- **GCC 2.9 skips the first test of a loop on a 64-bit mask in the high word.** `while (!(x & M))`,
+  `while ((x & M) == 0)` or `for (; !(x & M); )` with `x` a `long long` and `M` a constant whose low
+  32 bits are zero (e.g. `0x0020000000000000`) is compiled with the first round's test as `0 == 0`:
+  the body always runs once. A value that already passes is changed anyway (a shift loses its top
+  bit), or the loop never ends. Masks in the low word or in both words, `x < CONST`, `while (x)` and
+  32-bit loops are fine (checked in the emulator). Test the high word as 32 bits instead:
+  `while (!((unsigned int)(x >> 32) & (M >> 32)))`. Found in MuJS's number to text
+  (`normalize_boundary` in `jsdtoa.c`: 1.5 printed as "0.5"; Browser 9300's `jsbench/mujs-gcc29.patch`).
+  Look for such loops in any 64-bit code ported to this compiler (number formatting, bignums, hashes).
 - **Keys while the virtual cursor is on** (`TEikVirtualCursor`, used to read the joystick as a
   mouse for looking around): **Space alone** never arrives as a key. Each press becomes ONE pointer
   event, the cursor's button down and up in turn (a toggle), so a held Space can't be seen. Use
@@ -320,7 +329,7 @@ would still shorten.
 
 The shell Claude gets on the user's laptop (Cowork) is a Linux VM without root, where each
 command runs ~45 s at most and nothing survives in the background. The whole toolchain still
-builds there in stages: `symbian-build/toolchain/setup_vm_noroot.sh debs | clone | gccsrc |
+builds there in stages: `symbian-s80-build-tools/toolchain/setup_vm_noroot.sh debs | clone | gccsrc |
 configure | make (repeat until rc=0) | install | tools | s60 | s80`:
 - missing packages (flex, bison, 7z, cabextract, unshield) with `apt-get download` + `dpkg -x` into
   `~/loc`, put on `PATH`/`LD_LIBRARY_PATH`; 7z's wrapper script rewritten to its new place;

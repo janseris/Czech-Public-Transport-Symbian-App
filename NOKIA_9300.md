@@ -12,26 +12,26 @@ The work is split into separate repositories, cloned side by side in `phoneapk/`
 |---|---|---|
 | `.` (this repo) | `janseris/Czech-Public-Transport-Symbian-App` | The decompiled/patched Android app and API capture, the C# client (`PubtranClient/`), build tools, prebuilt TLS DLLs and these guides |
 | `pubtran-j2me/` | `janseris/pubtran-j2me` (fork of [gtrxac/discord-j2me](https://github.com/gtrxac/discord-j2me)) | The J2ME app for the phone |
-| `symbian-build/symbian-tls/` | [janseris/symbian-tls](https://github.com/janseris/symbian-tls), branch `eka1-java-fixes` (fork of shinovon/symbian-tls) | The TLS 1.2 patch (`SSLADAPTOR.dll`) with the EKA1/Java fixes |
-| `symbian-build/bearssl/` | [janseris/bearssl-symbian](https://github.com/janseris/bearssl-symbian), branch `eka1-fixes` | BearSSL for the patch |
+| `symbian-tls/` | [janseris/symbian-tls](https://github.com/janseris/symbian-tls), branch `eka1-java-fixes` (fork of shinovon/symbian-tls) | The TLS 1.2 patch (`SSLADAPTOR.dll`) with the EKA1/Java fixes |
+| `bearssl/` | [janseris/bearssl-symbian](https://github.com/janseris/bearssl-symbian), branch `eka1-fixes` | BearSSL for the patch |
 
 Clone them after this one:
 
 ```
 git clone https://github.com/janseris/pubtran-j2me.git
-git clone -b eka1-java-fixes https://github.com/janseris/symbian-tls.git symbian-build/symbian-tls
-git clone -b eka1-fixes https://github.com/janseris/bearssl-symbian.git symbian-build/bearssl
+git clone -b eka1-java-fixes https://github.com/janseris/symbian-tls.git symbian-tls
+git clone -b eka1-fixes https://github.com/janseris/bearssl-symbian.git bearssl
 ```
 
 In this repo:
 
-- `symbian-build/out/`: prebuilt `ssladaptor_v20-fixN.dll` (no log) and `ssladaptor_v20-fixN_log.dll`
+- `symbian-s80-build-tools/out/`: prebuilt `ssladaptor_v20-fixN.dll` (no log) and `ssladaptor_v20-fixN_log.dll`
   (logs to `C:\Logs\SSL\SSLLog.txt` when that folder exists), fix1 to fix10, plus the source patches.
   **Naming:** `v20-fixN` is our Nth fix build on top of shinovon's release **v20**. shinovon's own
   releases are v2 to v20, so the bare "v10" of our builds would be confused with his v10.
   **v20-fix10 is the current one**, tested with app 1.1 and 1.2. The working combination and the fork's
   changes are described in the pubtran-j2me README, section *Working configuration*.
-- `symbian-build/gcc-539-2aeh-source.tar.bz2`: source of the Symbian GCC 2.9 compiler.
+- `symbian-s80-build-tools/gcc-539-2aeh-source.tar.bz2`: source of the Symbian GCC 2.9 compiler.
 - `tlsprobe/`: a desktop BearSSL probe that behaves like the patch (optional SNI).
 - Build guide for the DLL: [BUILD_SYMBIAN_TLS.md](BUILD_SYMBIAN_TLS.md).
 

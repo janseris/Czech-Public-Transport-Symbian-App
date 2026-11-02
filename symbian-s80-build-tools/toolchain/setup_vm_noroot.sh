@@ -6,7 +6,7 @@
 # Then:  . ~/symenv.sh; cd maps9300 && SYM=~/sym ./build.sh   (~10 s for the whole app)
 set -e
 R=$(cd "$(dirname "$0")/../.." && pwd)          # phoneapk
-H=$R/symbian-build/toolchain
+H=$R/symbian-s80-build-tools/toolchain
 case "$1" in
 debs)
   mkdir -p ~/debs ~/loc ~/loc/lnk && cd ~/debs
@@ -20,7 +20,7 @@ export LD_LIBRARY_PATH=$HOME/loc/usr/lib/x86_64-linux-gnu:\$LD_LIBRARY_PATH
 export BISON_PKGDATADIR=$HOME/loc/usr/share/bison
 export M4=$HOME/loc/usr/bin/m4
 E2
-  mkdir -p ~/symsrc && ln -sf $R/symbian-build/gcc-539-2aeh-source.tar.bz2 ~/symsrc/ && ln -sfn $R/s60-sdk-2.1 ~/symsrc/s60-sdk-2.1
+  mkdir -p ~/symsrc && ln -sf $R/symbian-s80-build-tools/gcc-539-2aeh-source.tar.bz2 ~/symsrc/ && ln -sfn $R/s60-sdk-2.1 ~/symsrc/s60-sdk-2.1
   . ~/symenv.sh; 7z x -y -o$HOME/symsrc ~/symsrc/s60-sdk-2.1/S60_SDK_2_1_NET_2.7z.001 > /dev/null ;;
 clone)
   mkdir -p ~/sym && rm -rf ~/sym/gnupoc && git clone -q https://github.com/mstorsjo/gnupoc-package ~/sym/gnupoc
